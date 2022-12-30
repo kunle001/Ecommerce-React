@@ -1,8 +1,9 @@
-import Navbar from "./components/Navbar";
-// import Home from "./pages/Home";
+// import { Home } from "@material-ui/icons";
+// import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
 const App = () => {
-  return <Navbar/>;
+  return <Home/>;
 };
 
 export default App;
