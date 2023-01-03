@@ -1,12 +1,14 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons'
-import React from 'react'
+import {React, useState} from 'react'
 import styled from 'styled-components'
+import {SliderItems} from "../data"
 
 const Container= styled.div`
     width:100%;
     height:100vh;
     display:flex;
     position:relative;
+    overflow:hidden;
 `
 const Arrow= styled.div`
     width:50px;
@@ -22,13 +24,17 @@ const Arrow= styled.div`
     right:${props=> props.direction==="right" && "10px"}; 
     margin:auto;
     cursor:pointer;
-    opacity:0.3
+    opacity:0.3;
+    z-index: 2;
 `
 
-const Wrapper= styled.div`
-    height:100%;
-    display:flex;
-`
+const Wrapper = styled.div`
+  height: 100%;
+  display: flex;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
+  transition: all 2s ease;
+`;
+
 const Slide = styled.div`
   width: 100vw;
   height: 100vh;
@@ -38,18 +44,19 @@ const Slide = styled.div`
 `;
 
 const Image= styled.img`
-    height:80%;
+    height:100%;
 `
 
 const ImgContainer = styled.div`
   width: 70%;
   height: 100%;
+  display:flex;
 `;
 
 const InfoContainer = styled.div`
-  width: 30%;
+  width: 50%;
   height: 100%;
-  padding: 50px;
+  padding: 10% 35%;
 `;
 
 const Title= styled.h1`
@@ -58,7 +65,7 @@ const Title= styled.h1`
 const Desc= styled.p`
     margin:50px 0px;
     font-size: 20px;
-    font-weight:999;
+    font-weight:10000;
     letter-spacing:3px
 `
 const Button= styled.button`
@@ -68,46 +75,37 @@ const Button= styled.button`
     cursor:pointer;
 `
 
-
 const Slider = () => {
+   const [slideIndex, setSlideIndex]= useState(0);
+
+  const handleClick= (direction)=>{
+    if(direction==="left"){
+        setSlideIndex(slideIndex>0 ? slideIndex-1:2)
+    }else{
+        setSlideIndex(slideIndex<2 ? slideIndex+1:0)
+    }
+    }
   return (
     <Container>
-        <Arrow direction="left">
+        <Arrow direction="left" onClick={()=>handleClick("left")}>
             <ArrowLeftOutlined/>
         </Arrow>
-        <Wrapper>
-            <Slide bg="f5fafd">
+        <Wrapper slideIndex={slideIndex}>
+            {SliderItems.map(item=>(
+                <Slide bg={item.bg} key={item.id}>
                 <ImgContainer>
-                    <Image src='https://th.bing.com/th/id/R.20dc3df9387a9a6db0678f3e60563792?rik=vS%2b7PyQZA1N4aw&pid=ImgRaw&r=0'/>
+                    <Image src={item.img}/>
+                        <InfoContainer>
+                        <Title>{item.title}</Title>
+                        <Desc>{item.desc}</Desc>
+                        <Button>SHOP NOW</Button>
+                    </InfoContainer> 
                 </ImgContainer>
-                <InfoContainer>
-                    <Title>SUMMER SALES</Title>
-                    <Desc>DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS</Desc>
-                    <Button>SHOP NOW</Button>
-                </InfoContainer>            
-            </Slide>
-            <Slide bg="fcf1ed">
-                <ImgContainer>
-                    <Image src='https://th.bing.com/th/id/R.20dc3df9387a9a6db0678f3e60563792?rik=vS%2b7PyQZA1N4aw&pid=ImgRaw&r=0'/>
-                </ImgContainer>
-                <InfoContainer>
-                    <Title>WINTER SALES</Title>
-                    <Desc>Winter Wears at the Cheapest Rate</Desc>
-                    <Button>SHOP NOW</Button>
-                </InfoContainer>            
-            </Slide>
-            <Slide bg="fbf0f4">
-                <ImgContainer>
-                    <Image src='https://th.bing.com/th/id/R.20dc3df9387a9a6db0678f3e60563792?rik=vS%2b7PyQZA1N4aw&pid=ImgRaw&r=0'/>
-                </ImgContainer>
-                <InfoContainer>
-                    <Title>POPULAR SALES</Title>
-                    <Desc>Hot Sales Don't miss out</Desc>
-                    <Button>SHOP NOW</Button>
-                </InfoContainer>            
-            </Slide>
+           
+                </Slide>
+            ))}
         </Wrapper>
-        <Arrow direction="right">
+        <Arrow direction="right" onClick={()=>handleClick("right")}>
             <ArrowRightOutlined/>
         </Arrow>
         
