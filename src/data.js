@@ -11,7 +11,7 @@ export const SliderItems=[{
     img:'https://th.bing.com/th/id/R.20dc3df9387a9a6db0678f3e60563792?rik=vS%2b7PyQZA1N4aw&pid=ImgRaw&r=0',
     title: 'AUTUMN COLLECTION',
     desc: "DONT COMPROMISE ON STYLEGET FLAT 30% OFF YOUR NEW ARRIVALS.",
-    bg: "fcf1ed",
+    bg: "fcf8cd",
 
 },
 {
@@ -19,7 +19,7 @@ export const SliderItems=[{
     img:'https://th.bing.com/th/id/R.20dc3df9387a9a6db0678f3e60563792?rik=vS%2b7PyQZA1N4aw&pid=ImgRaw&r=0',
     title: 'VERSACE COLLECTIONS',
     desc: "DONT COMPROMISE ON STYLEGET FLAT 30% OFF YOUR NEW ARRIVALS.",
-    bg: "fcf1ed",
+    bg: "fcf1ef",
 }];
 
 export const categories=[
