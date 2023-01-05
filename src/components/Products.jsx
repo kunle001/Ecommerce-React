@@ -8,7 +8,7 @@ const Container=styled.div`
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin:5px;
+    margin:10px 0px 10px 0px;
 ` 
 
 const Products = () => {
