@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 
 const Container= styled.div`
-    height: 60px;
+    height: 80px;
 `
 const Wrapper= styled.div`
     padding: 10px 20px;
@@ -34,7 +34,7 @@ const Language= styled.span`
     cursor: pointer;
 `
 const SearchContainer= styled.div`
-    border:0.5px solid lightgray;
+    border:none;
     display:flex;
     align-items:center;
     margin-left:25px;
