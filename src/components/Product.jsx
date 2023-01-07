@@ -1,6 +1,7 @@
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
+import {mobile} from '../responsive'
 
 const Info= styled.div`
 opacity:0;
@@ -44,7 +45,8 @@ const Circle= styled.div`
 `
 const Image= styled.img`
     height:100%;
-    z-index:2
+    z-index:2;
+    ${mobile({width:"100%"})}
 `
 const Icon= styled.div`
     width:40px; 
