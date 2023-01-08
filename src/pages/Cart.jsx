@@ -3,104 +3,111 @@ import styled from "styled-components"
 import Announcements from "../components/Announcement"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
+import { mobile } from "../responsive"
 
-const Container= styled.div`
-    padding-left:3px;
+const Container = styled.div`
+  padding-left: 3px;
 `
-const Title= styled.h1`
-    font-weight:300;
-    text-align:center;
+const Title = styled.h1`
+  font-weight: 300;
+  text-align: center;
 `
-const Top= styled.div`
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    padding:20px;
-`;
-
-const TopButton= styled.button`
-    padding:10px;
-    font-weight:600;
-    cursor:pointer;
-    border:${(props)=> props.type === "filled" && "none"};
-    background-color:${(props)=>props.type==="filled" ? "black": "transparent"};
-    color:${(props)=>props.type==="filled" && "white"}
-`;
-
-const TopTexts= styled.div``
-const TopText= styled.span`
-    text-decoration:underline;
-    cursor:pointer;
-    margin: 0px 10px;
-`
-const Buttom= styled.div`
-    display:flex;
-    justify-content: space-between;
-`
-const Wrapper= styled.div``
-const Info= styled.div`
-    flex:3
+const Top = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 `
 
-const Product= styled.div`
-display:flex;
-    justify-content:space-between;
+const TopButton = styled.button`
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: ${(props) => (props.type === "filled" ? "none" : "")};
+  background-color: ${(props) => (props.type === "filled" ? "black" : "transparent")};
+  color: ${(props) => (props.type === "filled" && "white")};
 `
-;
 
-
-const PriceDetail= styled.div`
-flex:1;
-dsplay:flex;
-align-items:center;
-justify-content:space-between;
-`;
-const ProductDetail= styled.div`
-flex:2;
-display:flex;
-`;
-
-const ProductColor= styled.div`
-width:20px;
-height:20px;
-border-radius:50%;
-background-color: ${props=> props.color}
-`;
-
-const Hr= styled.hr`
-background-color: #eee;
-border:none;
-height:1px
+const TopTexts = styled.div`
+  ${mobile({ display: "none" })}
 `
-const ProductID= styled.span``;
-const ProductName= styled.span``;
-const ProductSize= styled.div``;
-const Details= styled.div`
-display:flex;
-padding:20px;
-flex-direction:column;
-padding-top: 200px;
-margin:3px;
-`;
+const TopText = styled.span`
+  text-decoration: underline;
+  cursor: pointer;
+  margin: 0px 10px;
+`
+const Buttom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${mobile({ flexDirection: "column" })}
+`
+const Wrapper = styled.div``
+const Info = styled.div`
+  flex: 3;
+`
+
+const Product = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${mobile({ flexDirection: "column"})}
+`
+
+const PriceDetail = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: space-between;
+  ${mobile({ padding: "0px", justifyContent: "center" })}
+`
+const ProductDetail = styled.div`
+  flex: 2;
+  display: flex;
+  ${mobile({ flexDirection: "column" })}
+`
+
+const ProductColor = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
+`
+
+const Hr = styled.hr`
+  background-color: #eee;
+  border: none;
+  height: 1px;
+`
+const ProductID = styled.span``
+const ProductName = styled.span``
+const ProductSize = styled.div``
+const Details = styled.div`
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  justify-content:space-around;
+`
 
 const Image= styled.img`
-padding:10px;
-padding-top:0px;
-height:100%;
-width:60%;
+width:200px;
+${mobile({width:"100%"})}
 `
 const ProductAmount= styled.div`
-font-size:15px;
-margin:5px;
+font-size:24px;
+margin:0px;
+${mobile({fontSize:"15px"})}
 `
 const ProductAmountContainer= styled.div`
     display:flex;
     align-items:center;
     padding-top: 200px;
+    ${mobile({margin:"5px 15px", paddingTop:"0px"})}
     `
 const ProductPrice= styled.div`
-font-size:30px;
+    font-size:30px;
     font-weight:200;
+    margin:5px;
+    ${mobile({marginBottom:"20px", fontSize:"25px"})}
 `;
 
 const Summary= styled.div`
@@ -167,7 +174,7 @@ const Cart = () => {
                     <PriceDetail>
                         <ProductAmountContainer>
                             <Add/>
-                                <ProductAmount>2 </ProductAmount>
+                                <ProductAmount>2</ProductAmount>
                             <Remove/>
                         </ProductAmountContainer>
                         <ProductPrice> $ 30</ProductPrice>
